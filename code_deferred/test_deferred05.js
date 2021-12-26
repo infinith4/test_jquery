@@ -11,10 +11,11 @@ $(document).on('click', '#startButton05', function () {
 
 var deferredf1_05 = function(index){
     var dfd = $.Deferred();
+    var timeout_millisec = index * 1000;
     asynctimeoutf_05(function(){
-        console.log('third:' + index);
+        console.log('third:' + index.toString());
         dfd.resolve();
-    }, 2000);
+    }, timeout_millisec);
     return dfd.promise();
 }
 
@@ -27,7 +28,7 @@ var get_deferredf1_05_array = function(){
     var deferreds = [];
     var num_array = [1,2,3,4,5,6,7,8,9,10];
     var deferredf1_05_func_array = num_array.map(function(index){
-        return deferredf1_05(index.toString());
+        return deferredf1_05(index);
     });
 
     return deferredf1_05_func_array;
