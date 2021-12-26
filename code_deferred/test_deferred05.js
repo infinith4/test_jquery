@@ -2,19 +2,11 @@ $(document).on('click', '#startButton05', function () {
     console.log("first");
 
     console.log("second");
-
-    deferrdf1_05("1").done(function(){
-        console.log("forth1");
-    });
-
-    deferrdf1_05("2").done(function(){
-        console.log("forth2");
-    });
-
+    finish_deferreds();
     console.log("fifth");
 });
 
-var deferrdf1_05 = function(index){
+var deferredf1_05 = function(index){
     var dfd = $.Deferred();
     asynctimeoutf(function(){
         console.log('third' + index);
@@ -25,4 +17,22 @@ var deferrdf1_05 = function(index){
 
 var asynctimeoutf_05 = function(f, millisec=1000) {
     setTimeout(f, millisec);
+}
+
+//http://jsfiddle.net/YNGcm/21/
+var get_deferredf1_05_array = function(){
+    var deferreds = [];
+    for(var i=0; i<10; i++){
+        deferreds.push(
+            deferredf1_05(i.toString())
+        )
+    }
+}
+
+var finish_deferreds = function(){
+    var deferreds_array = get_deferredf1_05_array();
+
+    $.when.apply($, deferreds_array).then(function(){
+        console.log("all done!");
+    });
 }

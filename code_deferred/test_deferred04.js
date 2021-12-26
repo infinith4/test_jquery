@@ -3,18 +3,18 @@ $(document).on('click', '#startButton04', function () {
 
     console.log("second");
 
-    deferrdf1("1").done(function(){
+    deferredf1("1").done(function(){
         console.log("forth1");
     });
 
-    deferrdf1("2").done(function(){
+    deferredf1("2").done(function(){
         console.log("forth2");
     });
 
     console.log("fifth");
 });
 
-var deferrdf1 = function(index){
+var deferredf1 = function(index){
     var dfd = $.Deferred();
     asynctimeoutf(function(){
         console.log(index);
